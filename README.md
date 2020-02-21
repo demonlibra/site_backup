@@ -28,7 +28,7 @@
 | backup_full.sh | Script for database and files backup |
 | exclude.txt    | Exclude list of files                |
 
-## Параметры
+## Parameters
 Check parameters at top of scripts.
 
 ## Yandex.Disk
