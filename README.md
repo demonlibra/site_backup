@@ -32,9 +32,8 @@
 Check parameters at top of scripts.
 
 ## Yandex.Disk
-It is possible to load backup to Yandex.Disk with encryption.
+It is possible to load backup to Yandex.Disk with encryption.  
+[Quick'n easy gpg cheatsheet](http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/)
 
 ## Restore database
-For big databse (and small too) I use simple php script by [BigDump](https://www.ozerov.de/bigdump/).  
-
-[Quick'n easy gpg cheatsheet](http://irtfweb.ifa.hawaii.edu/~lockhart/gpg/)
+For big databse (and small too) I use simple php script by [BigDump](https://www.ozerov.de/bigdump/).
