@@ -6,28 +6,33 @@
 
 # --------------------- PARAMETERS -------------------------------------------------------------------------
 
-days=30							# Days to keep backup
-type=full						# db - DataBase; full - Databes and Files
+days=30											# Days to keep backup
 
-temp_path="tmp"						# Temp folder
-name="forum"
-tempsql="$temp_path/$name""backup.sql"			# Name file with backup of database
-dest="backup"						# Destination backup archives
-backup_files="docs"					# Folder with files
-exclude_list="exclude.txt"				# Exclude list of files and folders from backup
+temp_path="tmp"								# Temp folder
+name="forum"									# e.g. forum, crm, site, ...
+tempsql="$temp_path/$name""backup.sql"	# Name temporary file with backup of database
+dest="backup"									# Destination folder for backup archives
+backup_files="docs"							# Folder with files which need to be backup
+exclude_list="exclude.txt"					# Exclude list of files and folders from backup
 
-dbhost="localhost"					# Host of database
-dbname="forum"						# Database name
-dbuser="root"						# User name
-dbpassword=""						# Password
+dbhost="localhost"							# Host of database
+dbname="forum"									# Database name
+dbuser="root"									# User name
+dbpassword=""									# Password
 
-yandexdisk_email=''					# Mail yandex.disk
-yandexdisk_pass=''					# Password yandex.disk
-yandexdisk_dir='backup'					# Path in yandex.disk to save 
+yandexdisk_email=''							# Mail yandex.disk
+yandexdisk_pass=''							# Password yandex.disk
+yandexdisk_dir='backup'						# Path in yandex.disk to save 
 
-user_id="username"					# User id for asymmetric encrypt. Dont forget to import key.
+user_id="username"							# User id for asymmetric encrypt. Don't forget to import key.
 
 # --------------------- SCRIPT -----------------------------------------------------------------------------
+
+# Get parameter from command line: db - only DataBase; full - DataBase and Files
+if [ $1 != "full" ] && [ $1 != "db" ]
+	then type=full
+	else type=$1
+fi
 
 # Create archive filename
 day=$(date +%F-%H-%M)
@@ -43,8 +48,9 @@ mkdir -p "$dest"
 # Dump MySQL
 mysqldump $dbname --host=$dbhost --user=$dbuser --password=$dbpassword --default-character-set=utf8 > "$tempsql"
 
-# Compress backup files using tar.
-tar czPf "$dest/$archive_file" --exclude-from="$exclude_list" "$tempsql" "$backup_files"
+# Compress backup files using tar
+if [ $type = "full" ]; then tar czPf "$dest/$archive_file" --exclude-from="$exclude_list" "$tempsql" "$backup_files"; fi	# full - backup database and files
+if [ $type = "db" ]; then tar czPf "$dest/$archive_file" "$tempsql"; fi																		# full - backup database only
 
 # Clear temp files
 rm "$tempsql"

@@ -1,14 +1,23 @@
 # Сценарии для создания резервных копий сайта/форума/CRM/...
 
 ## Описание файлов
-| Файл           | Описание                                     |
-|----------------|----------------------------------------------|
-| backup_db.sh   | Сценарий создания копии базы данных          |
-| backup_full.sh | Сценарий создания копии базы данных и файлов |
-| exclude.txt    | Список исключения при копировании файлов     |
+|     Файл    |                Описание                      |
+|-------------|----------------------------------------------|
+|  backup.sh  | Сценарий создания копии базы данных и файлов |
+| exclude.txt | Список исключения при копировании файлов     |
 
 ## Параметры
 Проверьте параметры в начале файла.
+
+## Запуск
+Добавьте в администраторской панели сайта исполнение сценария по расписанию:
+```
+cd "путь к каталогу со сценарием"; bash backup.sh full"
+```
+или
+```
+cd "путь к каталогу со сценарием"; bash backup.sh db"
+```
 
 ## Yandex.Disk
 Возможна загрузка резервных копий на Yandex.Disk с предварительным шифрованием.  
@@ -22,14 +31,23 @@
 # Scripts for backup site/forum/CRM/...
 
 ## Description of the files
-| File           | Description                          |
-|----------------|--------------------------------------|
-| backup_db.sh   | Script for database backup           |
-| backup_full.sh | Script for database and files backup |
-| exclude.txt    | Exclude list of files                |
+|    File     | Description                          |
+|-------------|--------------------------------------|
+|  backup.sh  | Script for database and files backup |
+| exclude.txt | Exclude list of files                |
 
 ## Parameters
 Check parameters at top of scripts.
+
+## Running
+Add to admin panel of the site command to run script by schedule:
+```
+cd "path to folder with script"; bash backup.sh full"
+```
+or
+```
+cd "path to folder with script"; bash backup.sh db"
+```
 
 ## Yandex.Disk
 It is possible to load backup to Yandex.Disk with encryption.  
