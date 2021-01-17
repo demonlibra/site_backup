@@ -1,4 +1,4 @@
-# Сценарии для создания резервных копий сайта/форума/CRM/...
+# Сценарий для создания резервных копий сайта/форума/CRM/...
 
 ## Описание файлов
 |     Файл    |                Описание                      |
@@ -6,19 +6,25 @@
 |  backup.sh  | Сценарий создания копии базы данных и файлов |
 | exclude.txt | Список исключения при копировании файлов     |
 
-## Параметры
+## Параметры сценария
 Проверьте параметры в начале файла.
 
-## Запуск
+## Ключи сценария
+|     Ключ    |                Описание                      |
+|-------------|----------------------------------------------|
+|      db     | Сценарий создания копии только базы данных   |
+|     full    | Сценарий создания копии базы данных и файлов |
+|  yandexdisk | Зашифровать копию и отправить на яндекс.диск |
+
+## Запуск сценария
 Добавьте в администраторской панели сайта исполнение сценария по расписанию:
 ```
-cd "путь к каталогу со сценарием"; bash backup.sh full"
+cd "путь к каталогу со сценарием"; bash backup.sh full yandexdisk"
 ```
 или
 ```
-cd "путь к каталогу со сценарием"; bash backup.sh db"
+cd "путь к каталогу со сценарием"; bash backup.sh db yandexdisk"
 ```
-
 ## Yandex.Disk
 Возможна загрузка резервных копий на Yandex.Disk с предварительным шифрованием.  
 
@@ -39,14 +45,21 @@ cd "путь к каталогу со сценарием"; bash backup.sh db"
 ## Parameters
 Check parameters at top of scripts.
 
+## Keys
+|     Key    |                Description                      |
+|-------------|----------------------------------------------|
+|      db     | Script for database only   |
+|     full    | Script for database and files backup |
+|  yandexdisk | Decrypt backup and send yandex.disk |
+
 ## Running
 Add to admin panel of the site command to run script by schedule:
 ```
-cd "path to folder with script"; bash backup.sh full"
+cd "path to folder with script"; bash backup.sh full yandexdisk"
 ```
 or
 ```
-cd "path to folder with script"; bash backup.sh db"
+cd "path to folder with script"; bash backup.sh db yandexdisk"
 ```
 
 ## Yandex.Disk
