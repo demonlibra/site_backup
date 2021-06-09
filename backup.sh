@@ -66,7 +66,7 @@ rm "$tempsql"
 # Delete old backups
 find $dest -mtime +$days -regex ".*$type.*" -type f -exec rm -f {} \;
 
-if [ ydisk = "true" ]
+if [ "$ydisk" = "true" ]
 	then
 		# Encrypt backup
 		gpg -e -r "$user_id" $dest/$archive_file
